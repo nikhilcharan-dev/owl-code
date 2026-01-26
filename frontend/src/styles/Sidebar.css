@@ -109,7 +109,118 @@
     /* No padding here, we let the pages handle their internal container padding if needed, 
        but typically main content area needs some padding or the pages need to drop 'container' logic.
        Let's add default padding for the main area wrapper. */
-    /* Wait, the existing pages use .container inside .page. 
-       .page usually has min-height 100vh. 
-       We might need to adjust .page styles in pages to not be full viewport width/height incorrectly. */
+    /* Should be covered by page-content-wrapper */
+}
+
+/* Mobile Responsiveness Implementation (Vanilla CSS) */
+
+/* Default Desktop State */
+.mobile-header {
+    display: none;
+}
+
+.sidebar-container {
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    z-index: 40;
+}
+
+.mobile-overlay {
+    display: none;
+}
+
+.page-content-wrapper {
+    /* max-width: 1280px; */
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Mobile State */
+@media (max-width: 768px) {
+    .admin-layout {
+        flex-direction: column;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .mobile-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 1rem;
+        background: var(--bg-secondary);
+        border-bottom: 1px solid var(--border-color);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 50;
+        height: 64px;
+    }
+
+    .brand-title-mobile {
+        font-size: 1.25rem;
+        font-weight: 800;
+        color: var(--text-primary);
+        margin: 0;
+    }
+
+    .mobile-toggle-btn {
+        background: transparent;
+        border: none;
+        color: var(--text-secondary);
+        font-size: 1.5rem;
+        cursor: pointer;
+        padding: 0.5rem;
+    }
+
+    .sidebar-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 260px;
+        /* Match sidebar width */
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 100;
+        /* Above header */
+        box-shadow: var(--shadow-xl);
+        background: var(--bg-card);
+        /* Ensure bg is opaque */
+    }
+
+    .sidebar-container.open {
+        transform: translateX(0);
+    }
+
+    /* Override Sidebar component sticky behavior for mobile wrapper */
+    .sidebar {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        border-right: none;
+    }
+
+    .mobile-overlay {
+        display: block;
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(4px);
+        z-index: 90;
+    }
+
+    .admin-main-content {
+        margin-top: 64px;
+        /* Header height */
+        height: calc(100vh - 64px);
+        overflow-y: auto;
+    }
+
+    .page-content-wrapper {
+        padding: 1rem;
+    }
 }

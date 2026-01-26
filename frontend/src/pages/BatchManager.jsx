@@ -198,45 +198,47 @@ function BatchManager() {
                     {batches.length === 0 ? (
                         <p className="text-muted text-center">No batches found.</p>
                     ) : (
-                        <table className="table">
-                            <thead>
-                                <tr>
-                                    <th>Batch Name</th>
-                                    <th>Course</th>
-                                    <th>Dates</th>
-                                    <th>Stats</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {batches.map((batch) => (
-                                    <tr key={batch._id}>
-                                        <td><strong>{batch.name}</strong></td>
-                                        <td>{batch.course?.title || 'Unknown'}</td>
-                                        <td className="batch-date">
-                                            {new Date(batch.startDate).toLocaleDateString()} - {new Date(batch.endDate).toLocaleDateString()}
-                                        </td>
-                                        <td><span className="text-secondary">{batch.trainees?.length || 0} Trainees</span></td>
-                                        <td>
-                                            <div className="flex gap-2">
-                                                <Button variant="secondary" size="sm" onClick={() => handleOpenEditModal(batch)}>
-                                                    ✎
-                                                </Button>
-                                                <Button variant="danger" size="sm" onClick={() => handleDeleteBatch(batch._id)}>
-                                                    ✕
-                                                </Button>
-                                                <Button variant="primary" size="sm" onClick={() => { setSelectedBatchId(batch._id); setShowBulkModal(true); }}>
-                                                    📥 Add Trainees
-                                                </Button>
-                                                <Button variant="secondary" size="sm" onClick={() => { setViewTraineesBatch(batch); setShowViewTraineesModal(true); }}>
-                                                    👥 View Trainees
-                                                </Button>
-                                            </div>
-                                        </td>
+                        <div className="overflow-x-auto">
+                            <table className="table min-w-full">
+                                <thead>
+                                    <tr>
+                                        <th>Batch Name</th>
+                                        <th>Course</th>
+                                        <th>Dates</th>
+                                        <th>Stats</th>
+                                        <th>Actions</th>
                                     </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                    {batches.map((batch) => (
+                                        <tr key={batch._id}>
+                                            <td><strong>{batch.name}</strong></td>
+                                            <td>{batch.course?.title || 'Unknown'}</td>
+                                            <td className="batch-date">
+                                                {new Date(batch.startDate).toLocaleDateString()} - {new Date(batch.endDate).toLocaleDateString()}
+                                            </td>
+                                            <td><span className="text-secondary">{batch.trainees?.length || 0} Trainees</span></td>
+                                            <td>
+                                                <div className="flex gap-2">
+                                                    <Button variant="secondary" size="sm" onClick={() => handleOpenEditModal(batch)}>
+                                                        ✎
+                                                    </Button>
+                                                    <Button variant="danger" size="sm" onClick={() => handleDeleteBatch(batch._id)}>
+                                                        ✕
+                                                    </Button>
+                                                    <Button variant="primary" size="sm" onClick={() => { setSelectedBatchId(batch._id); setShowBulkModal(true); }}>
+                                                        📥 Add Trainees
+                                                    </Button>
+                                                    <Button variant="secondary" size="sm" onClick={() => { setViewTraineesBatch(batch); setShowViewTraineesModal(true); }}>
+                                                        👥 View Trainees
+                                                    </Button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    ))}
+                                </tbody>
+                            </table>
+                        </div>
                     )}
                 </div>
 
@@ -425,29 +427,31 @@ function ViewTraineesModal({ batch, isOpen, onClose }) {
                     ) : (
                         <>
                             <div className="card" style={{ padding: '0.5rem' }}>
-                                <table className="table">
-                                    <thead>
-                                        <tr>
-                                            <th>Name</th>
-                                            <th>Email</th>
-                                            <th>Joined</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        {trainees.map(t => (
-                                            <tr
-                                                key={t._id}
-                                                onClick={() => { setSelectedTrainee(t); setShowProfile(true); }}
-                                                style={{ cursor: 'pointer' }}
-                                                className="hover:bg-white/5 transition-colors"
-                                            >
-                                                <td style={{ fontWeight: 600 }}>{t.name}</td>
-                                                <td className="text-secondary">{t.workEmail}</td>
-                                                <td className="text-xs">{new Date(t.createdAt).toLocaleDateString()}</td>
+                                <div className="overflow-x-auto">
+                                    <table className="table min-w-full">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Email</th>
+                                                <th>Joined</th>
                                             </tr>
-                                        ))}
-                                    </tbody>
-                                </table>
+                                        </thead>
+                                        <tbody>
+                                            {trainees.map(t => (
+                                                <tr
+                                                    key={t._id}
+                                                    onClick={() => { setSelectedTrainee(t); setShowProfile(true); }}
+                                                    style={{ cursor: 'pointer' }}
+                                                    className="hover:bg-white/5 transition-colors"
+                                                >
+                                                    <td style={{ fontWeight: 600 }}>{t.name}</td>
+                                                    <td className="text-secondary">{t.workEmail}</td>
+                                                    <td className="text-xs">{new Date(t.createdAt).toLocaleDateString()}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
 
                             {totalPages > 1 && (

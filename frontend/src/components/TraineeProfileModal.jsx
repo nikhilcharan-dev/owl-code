@@ -123,7 +123,7 @@ const TraineeProfileModal = ({ isOpen, onClose, trainee }) => {
                 </div>
 
                 {/* Top Row: Account & Batches */}
-                <div className="grid grid-cols-2 gap-6 mb-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
                     {/* Left Column: Account Info */}
                     <div className="flex flex-col gap-6">
                         <section>
@@ -218,7 +218,7 @@ const TraineeProfileModal = ({ isOpen, onClose, trainee }) => {
 
                     {isEditingHandles ? (
                         <div className="flex flex-col gap-3 info-card">
-                            <div className="grid grid-cols-2 gap-4">
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 <div className="form-group">
                                     <label className="text-xs text-muted uppercase">LeetCode Username</label>
                                     <input
@@ -317,7 +317,7 @@ const TraineeProfileModal = ({ isOpen, onClose, trainee }) => {
                                     </div>
 
                                     {/* Circular Graph Section & Stats */}
-                                    <div className="grid grid-cols-2 gap-6 mb-6">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                                         <div className="flex flex-col gap-4 bg-white/5 p-4 rounded-xl border border-white/10">
                                             <div className="flex items-center gap-6">
                                                 <div style={{ width: 80, height: 80, position: 'relative', minWidth: '80px' }}>
@@ -472,12 +472,6 @@ const TraineeProfileModal = ({ isOpen, onClose, trainee }) => {
                                                     style={{ width: '70px', height: '70px', borderRadius: '12px', objectFit: 'cover' }}
                                                     className="border-2 border-white/10"
                                                 />
-                                                {/* Rank Stripe */}
-                                                <div className="absolute -bottom-1 -right-1 w-full text-center">
-                                                    <span className="text-[0.6rem] font-bold px-1.5 py-0.5 rounded-full bg-black/80 border border-white/20 uppercase" style={{ color: getCFRankColor(codeforcesData.rank) }}>
-                                                        {codeforcesData.rank || 'Unrated'}
-                                                    </span>
-                                                </div>
                                             </div>
                                             <div>
                                                 <h3 className="font-bold text-xl">{codeforcesData.name}</h3>
@@ -506,7 +500,7 @@ const TraineeProfileModal = ({ isOpen, onClose, trainee }) => {
                                     </div>
 
                                     {/* Info Grid */}
-                                    <div className="grid grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div className="bg-white/5 p-3 rounded-lg border border-white/10 flex flex-row items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
                                             <span className="text-2xl">🤝</span>
                                             <div>
@@ -608,7 +602,7 @@ const TraineeProfileModal = ({ isOpen, onClose, trainee }) => {
                                     </div>
 
                                     {/* Info Grid */}
-                                    <div className="grid grid-cols-3 gap-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                         <div className="bg-white/5 p-3 rounded-lg border border-white/10 flex flex-row items-center gap-3 px-4 py-3 hover:bg-white/10 transition-colors">
                                             <span className="text-2xl">🌍</span>
                                             <div>

@@ -1,7 +1,7 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import '../styles/Sidebar.css';
 
-function Sidebar() {
+function Sidebar({ onClose }) {
     const navigate = useNavigate();
 
     const handleLogout = () => {
@@ -13,40 +13,46 @@ function Sidebar() {
 
     const adminName = localStorage.getItem('name') || 'Admin';
 
+    const handleLinkClick = () => {
+        if (onClose && window.innerWidth < 768) {
+            onClose();
+        }
+    };
+
     return (
-        <aside className="sidebar">
+        <aside className="sidebar h-full">
             <div className="sidebar-header">
                 <h1 className="brand-title">Owl Coder</h1>
                 <p className="brand-subtitle">Hello, {adminName}</p>
             </div>
 
             <nav className="sidebar-nav">
-                <NavLink to="/admin" end className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}>
+                <NavLink to="/admin" end className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`} onClick={handleLinkClick}>
                     <span className="sidebar-icon">📊</span>
                     Dashboard
                 </NavLink>
 
-                <NavLink to="/admin/courses" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}>
+                <NavLink to="/admin/courses" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`} onClick={handleLinkClick}>
                     <span className="sidebar-icon">📚</span>
                     Courses
                 </NavLink>
 
-                <NavLink to="/admin/batches" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}>
+                <NavLink to="/admin/batches" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`} onClick={handleLinkClick}>
                     <span className="sidebar-icon">👥</span>
                     Batches
                 </NavLink>
 
-                <NavLink to="/admin/trainees" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}>
+                <NavLink to="/admin/trainees" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`} onClick={handleLinkClick}>
                     <span className="sidebar-icon">🎓</span>
                     Trainees
                 </NavLink>
 
-                <NavLink to="/admin/trainers" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}>
+                <NavLink to="/admin/trainers" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`} onClick={handleLinkClick}>
                     <span className="sidebar-icon">👨‍🏫</span>
                     Trainers
                 </NavLink>
 
-                <NavLink to="/admin/challenges" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`}>
+                <NavLink to="/admin/challenges" className={({ isActive }) => `sidebar-link ${isActive ? 'active' : ''}`} onClick={handleLinkClick}>
                     <span className="sidebar-icon">🏆</span>
                     Challenges
                 </NavLink>
