@@ -1,0 +1,68 @@
+/* CourseManager.css */
+
+.course-empty-state {
+    text-align: center;
+    padding: 1rem;
+}
+
+.course-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.course-title {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    background-clip: text;
+    margin-right: 0.5rem;
+}
+
+.course-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.action-icon {
+    opacity: 0.7;
+}
+
+.course-description {
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    min-height: 3em;
+    line-height: 1.6;
+}
+
+.course-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.course-date {
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.calendar-icon {
+    font-size: 1rem;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    justify-content: flex-end;
+}

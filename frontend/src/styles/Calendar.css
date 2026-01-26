@@ -1,0 +1,225 @@
+/* Calendar Grid Shared Styles */
+.month-section {
+    margin-bottom: 4rem;
+}
+
+.month-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    margin-bottom: 1.5rem;
+    padding-left: 0.5rem;
+    border-left: 4px solid var(--accent-primary);
+    color: var(--text-primary);
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1rem;
+}
+
+@media (max-width: 640px) {
+    .calendar-grid {
+        grid-template-columns: repeat(7, 1fr);
+        gap: 4px;
+    }
+}
+
+.calendar-day-header {
+    text-align: center;
+    padding: 0.75rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.1em;
+}
+
+.calendar-day {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    min-height: 160px;
+    /* Increased height */
+    padding: 1rem;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+@media (max-width: 640px) {
+    .calendar-day {
+        padding: 0.25rem;
+        aspect-ratio: 1/1;
+        min-height: auto;
+    }
+}
+
+.calendar-day:hover {
+    border-color: var(--accent-primary);
+    box-shadow: var(--shadow-md), var(--shadow-premium);
+    transform: translateY(-2px);
+}
+
+.calendar-day.holiday {
+    opacity: 0.7;
+    background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(239, 68, 68, 0.03) 10px, rgba(239, 68, 68, 0.03) 20px);
+}
+
+.calendar-day.empty {
+    opacity: 0.15;
+    pointer-events: none;
+    border-style: dashed;
+}
+
+.calendar-day.has-assignment {
+    border-top: 4px solid var(--accent-primary);
+}
+
+.day-number {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    font-size: 0.875rem;
+    font-weight: 800;
+    color: var(--text-muted);
+}
+
+.day-content {
+    margin-top: 1.25rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow: hidden;
+}
+
+.assignment-item-mini {
+    font-size: 0.7rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--text-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.assignment-indicator {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--accent-primary);
+    flex-shrink: 0;
+}
+
+.off-label {
+    color: #ef4444;
+    font-size: 0.7rem;
+    font-weight: 800;
+    margin-top: auto;
+}
+
+.add-hint {
+    color: var(--text-muted);
+    font-size: 0.65rem;
+    font-weight: 600;
+    margin-top: auto;
+    transition: color 0.2s;
+}
+
+.calendar-day:hover .add-hint {
+    color: var(--accent-primary);
+}
+
+/* Multi-Assignment Form Styles */
+.assignment-form-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 1rem;
+    align-items: end;
+}
+
+.assignment-form-card .form-group {
+    margin-bottom: 0.5rem;
+}
+
+.assignment-form-card .form-group.full-width {
+    grid-column: span 3;
+}
+
+.assignment-form-card .remove-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+    background: rgba(239, 68, 68, 0.1);
+    color: #ef4444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid rgba(239, 68, 68, 0.2);
+    font-size: 0.75rem;
+    transition: all 0.2s;
+}
+
+.assignment-form-card .remove-btn:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.platform-badge {
+    font-size: 0.65rem;
+    font-weight: 800;
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: white;
+    text-transform: uppercase;
+}
+
+.platform-leetcode {
+    background: #ffa116;
+}
+
+.platform-codeforces {
+    background: #3182ce;
+}
+
+.platform-codechef {
+    background: #5b4638;
+}
+
+.platform-atcoder {
+    background: #000;
+}
+
+.platform-other {
+    background: var(--text-muted);
+}
+
+/* Level Colors */
+.level-easy {
+    color: #00b8a3;
+}
+
+.level-medium {
+    color: #ffb800;
+}
+
+.level-hard {
+    color: #ff2d55;
+}

@@ -1,0 +1,65 @@
+/* ChallengeManager.css */
+
+.challenge-empty-state {
+    text-align: center;
+    padding: 1rem;
+}
+
+.challenge-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 0.5rem;
+}
+
+.challenge-title {
+    background: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+    background-clip: text;
+    margin-right: 0.5rem;
+}
+
+.challenge-actions {
+    display: flex;
+    gap: 0.25rem;
+}
+
+.challenge-description {
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    font-size: 0.85rem;
+    min-height: 3em;
+    line-height: 1.6;
+}
+
+.challenge-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.challenge-tags {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.tag-duration {
+    background: rgba(var(--accent-primary-rgb), 0.1);
+    color: var(--accent-primary);
+}
+
+.tag-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+}
+
+.tag-muted {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+}
