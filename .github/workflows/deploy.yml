@@ -27,13 +27,13 @@ jobs:
           ssh ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} << 'EOF'
 
           echo "🚀 Backend"
-          cd /var/www/owl-code/backend
+          cd /var/www/up-skill/backend
           git pull origin main
           npm install
           pm2 restart upskill-server || pm2 start src/server.js --name upskill-server
 
           echo "🎨 Frontend"
-          cd /var/www/owl-code/frontend
+          cd /var/www/up-skill/frontend
           git pull origin main
           npm install
           npm run build
