@@ -1,0 +1,36 @@
+name: SSH Connection Debug
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Show runner info
+        run: |
+          echo "Runner IP info:"
+          ip a
+          echo "----"
+          curl ifconfig.me
+
+      - name: Check port 22 connectivity
+        run: |
+          echo "Testing TCP connection to port 22..."
+          nc -zv ${{ secrets.VM_HOST }} 22 || echo "PORT 22 NOT REACHABLE"
+
+      - name: Setup SSH Agent
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.VM_SSH_KEY }}
+
+      - name: Verbose SSH Test
+        run: |
+          ssh -vvv \
+            -o ConnectTimeout=10 \
+            -o StrictHostKeyChecking=no \
+            ${{ secrets.VM_USER }}@${{ secrets.VM_HOST }} \
+            "echo CONNECTED"
