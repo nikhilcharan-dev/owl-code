@@ -14,9 +14,9 @@ import { verifyToken } from './middlewares/auth.js';
 const app = express();
 
 // Middleware
-app.use(helmet({
-    crossOriginResourcePolicy: { policy: "cross-origin" },
-}));
+// app.use(helmet({
+//     crossOriginResourcePolicy: { policy: "cross-origin" },
+// }));
 // app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json({ limit: '50mb' }));
