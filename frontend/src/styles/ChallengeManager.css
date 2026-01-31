@@ -118,8 +118,3 @@
 .text-muted {
     color: var(--text-muted);
 }
-
-/* Card Animations */
-.animate-card {
-    opacity: 0;
-}

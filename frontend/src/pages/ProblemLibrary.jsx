@@ -118,6 +118,12 @@ function ProblemLibrary() {
         }
     };
 
+    const handleCopy = (e, text) => {
+        e.stopPropagation();
+        navigator.clipboard.writeText(text);
+        showToast('Copied to clipboard', 'success');
+    };
+
     return (
         <div className="page problem-library">
             <div className="container">
@@ -222,19 +228,30 @@ function ProblemLibrary() {
                                 <div key={problem._id} className="grid-row">
                                     <div className="col-main">
                                         <div className="problem-title" title={problem.title}>
-                                            {problem.title}
-                                            <a
-                                                href={problem.link}
-                                                target="_blank"
-                                                rel="noopener noreferrer"
-                                                className="problem-link-icon"
-                                                title="Open Problem Link"
-                                                onClick={(e) => e.stopPropagation()}
-                                            >
-                                                <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
-                                                </svg>
-                                            </a>
+                                            <span className="truncate-text">{problem.title}</span>
+                                            <div className="flex-shrink-0 flex gap-1 bg-transparent">
+                                                <button
+                                                    className="problem-icon-btn"
+                                                    onClick={(e) => handleCopy(e, problem.title)}
+                                                    title="Copy Title"
+                                                >
+                                                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                                    </svg>
+                                                </button>
+                                                <a
+                                                    href={problem.link}
+                                                    target="_blank"
+                                                    rel="noopener noreferrer"
+                                                    className="problem-icon-btn"
+                                                    title="Open Problem Link"
+                                                    onClick={(e) => e.stopPropagation()}
+                                                >
+                                                    <svg width="14" height="14" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                                                    </svg>
+                                                </a>
+                                            </div>
                                         </div>
                                         <div className="problem-tags">
                                             {problem.tags.slice(0, 3).map((tag, i) => (

@@ -153,11 +153,7 @@
     font-size: 1rem;
     display: flex;
     align-items: center;
-    opacity: 1;
-    justify-content: flex-end;
-    margin-top: 1rem;
-    border-top: 1px solid var(--border-color);
-    padding-top: 1rem;
+    justify-content: flex-start;
     width: 100%;
     gap: 0.5rem;
 }
@@ -251,17 +247,29 @@
 }
 
 
-.problem-link-icon {
+.truncate-text {
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    min-width: 0;
+}
+
+.problem-icon-btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     color: var(--text-muted);
     opacity: 0.7;
     transition: all 0.2s;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 2px;
 }
 
-.problem-link-icon:focus,
-.problem-link-icon:hover {
+.problem-icon-btn:focus,
+.problem-icon-btn:hover {
     opacity: 1;
     color: var(--accent-primary);
     transform: translateY(-1px);
